@@ -1,32 +1,32 @@
 /* ============================================================
-   Variables globales del diseño
-   Paleta: fondo oscuro profundo + acento violeta + blancos
+   VARIABLES GLOBALES
+   Paleta editorial-tech: negro profundo + amarillo limón + crema
 ============================================================ */
 :root {
-  --accent:          #6c63ff;
-  --accent-dark:     #5a52d5;
-  --accent-rgb:      108, 99, 255;
+  --accent:          #E8FF00;        /* amarillo limón */
+  --accent-dark:     #c8dc00;
+  --accent-rgb:      232, 255, 0;
 
-  --bg-dark:         #0f0f1a;
-  --bg-dark-2:       #16162a;
-  --bg-light:        #f8f9ff;
+  --bg-dark:         #0C0C0C;        /* negro profundo, no azulado */
+  --bg-dark-2:       #141414;
+  --bg-light:        #F0EDE6;        /* crema cálido */
 
-  --text-light:      #e0e0f0;
-  --text-muted-soft: rgba(224, 224, 240, 0.5);
+  --text-light:      #E8E6E0;
+  --text-muted-soft: rgba(232, 230, 224, 0.45);
 
-  --radius-sm:  8px;
-  --radius-md:  14px;
-  --radius-lg:  20px;
+  --radius-sm:  4px;
+  --radius-md:  4px;
+  --radius-lg:  4px;
 
-  --shadow-sm:  0 2px 8px  rgba(0, 0, 0, 0.15);
-  --shadow-md:  0 6px 24px rgba(0, 0, 0, 0.2);
-  --shadow-lg:  0 12px 40px rgba(0, 0, 0, 0.3);
+  --shadow-sm:  0 2px 8px  rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 6px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg:  0 12px 40px rgba(0, 0, 0, 0.6);
 
   --transition: 0.25s ease;
 }
 
 /* ============================================================
-   Reset y base
+   RESET Y BASE
 ============================================================ */
 *,
 *::before,
@@ -39,7 +39,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 1rem;
   line-height: 1.7;
   background-color: var(--bg-dark);
@@ -54,33 +54,46 @@ main section[id] {
 }
 
 /* ============================================================
-   Tipografía fluida con clamp()
-   Escala suavemente entre mobile y desktop
+   TIPOGRAFÍA
+   Syne para headings, IBM Plex Mono para cuerpo
 ============================================================ */
+h1, h2, h3,
+.display-2, .display-4, .display-6 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+}
+
+/* Tipografía fluida con clamp() */
 h1, .display-2 { font-size: clamp(2rem, 5vw + 1rem, 4rem); }
 h2, .display-6 { font-size: clamp(1.5rem, 3vw + 0.5rem, 2.25rem); }
 h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 
 /* ============================================================
-   Navbar
+   NAVBAR
 ============================================================ */
 #navbar {
-  background: rgba(15, 15, 26, 0.85);
+  background: rgba(12, 12, 12, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(var(--accent-rgb), 0.15);
+  border-bottom: 1px solid rgba(232, 255, 0, 0.2);
   transition: background var(--transition), box-shadow var(--transition);
 }
 
+/* Brand en mayúsculas, estilo editorial */
 #navbar .navbar-brand {
-  font-size: 1.25rem;
-  letter-spacing: -0.5px;
-  color: #fff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 #navbar .nav-link {
-  color: rgba(224, 224, 240, 0.75);
-  font-weight: 500;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: rgba(232, 230, 224, 0.6);
+  font-weight: 400;
   padding: 0.4rem 0.85rem;
   border-radius: var(--radius-sm);
   transition: color var(--transition), background var(--transition);
@@ -88,83 +101,146 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 
 #navbar .nav-link:hover,
 #navbar .nav-link.active {
-  color: #fff;
-  background: rgba(var(--accent-rgb), 0.15);
+  color: var(--accent);
+  background: rgba(232, 255, 0, 0.06);
+}
+
+/* Números de navegación */
+.nav-num {
+  color: rgba(232, 255, 0, 0.5);
+  margin-right: 0.35rem;
+  font-size: 0.7rem;
 }
 
 /* ============================================================
-   Hero — página de inicio
+   HERO — página de inicio
+   Fondo negro con dot-grid amarillo sutil
 ============================================================ */
 #hero {
-  background:
-    radial-gradient(ellipse at 65% 40%, rgba(var(--accent-rgb), 0.25) 0%, transparent 60%),
-    radial-gradient(ellipse at 15% 80%, rgba(99, 179, 255, 0.12) 0%, transparent 55%),
-    var(--bg-dark);
+  background: var(--bg-dark);
+  position: relative;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(232, 255, 0, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* H1 del hero: grande, comprimido, impactante */
+#hero h1 {
+  font-size: clamp(3.5rem, 10vw + 1rem, 8rem);
+  letter-spacing: -2px;
+  line-height: 0.95;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
 }
 
 .hero-subtitle {
-  font-size: clamp(1.1rem, 2vw + 0.5rem, 1.6rem);
-  color: rgba(224, 224, 240, 0.55);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(0.9rem, 1.5vw + 0.3rem, 1.2rem);
+  color: rgba(232, 230, 224, 0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .hero-desc {
   max-width: 560px;
-  color: rgba(224, 224, 240, 0.7);
+  color: rgba(232, 230, 224, 0.65);
+  font-size: 0.95rem;
 }
 
 /* ============================================================
-   Hero — página de proyectos
+   HERO — página de proyectos
 ============================================================ */
 .page-hero {
   min-height: 42vh;
-  background:
-    radial-gradient(ellipse at 50% 60%, rgba(var(--accent-rgb), 0.2) 0%, transparent 65%),
-    var(--bg-dark);
+  background: var(--bg-dark);
+  position: relative;
   padding-top: 100px;
 }
 
-/* ============================================================
-   Utilidades de color / texto
-============================================================ */
-.text-accent        { color: var(--accent); }
-.text-accent-soft   { color: rgba(var(--accent-rgb), 0.8); }
-.text-muted-light   { color: rgba(224, 224, 240, 0.55) !important; }
-.text-muted-soft    { color: var(--text-muted-soft); }
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(232, 255, 0, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.page-hero .container {
+  position: relative;
+  z-index: 1;
+}
 
 /* ============================================================
-   Botones personalizados
+   UTILIDADES DE COLOR / TEXTO
+============================================================ */
+.text-accent      { color: var(--accent); }
+.text-accent-soft { color: rgba(var(--accent-rgb), 0.7); }
+.text-muted-light { color: rgba(232, 230, 224, 0.45) !important; }
+.text-muted-soft  { color: var(--text-muted-soft); }
+
+/* ============================================================
+   BOTONES
 ============================================================ */
 .btn-accent {
   background-color: var(--accent);
-  color: #fff;
+  color: #0C0C0C;
   border: none;
   border-radius: var(--radius-sm);
-  font-weight: 600;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .btn-accent:hover,
 .btn-accent:focus-visible {
   background-color: var(--accent-dark);
-  color: #fff;
+  color: #0C0C0C;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.4);
+  box-shadow: 0 6px 20px rgba(232, 255, 0, 0.3);
 }
 
 .btn-outline-light {
   border-radius: var(--radius-sm);
-  font-weight: 600;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border-color: rgba(232, 230, 224, 0.3);
+  color: var(--text-light);
+}
+
+.btn-outline-light:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: transparent;
 }
 
 /* Botones de filtro (página proyectos) */
 .btn-filter {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  border: 1px solid rgba(232, 230, 224, 0.15);
   color: var(--text-muted-soft);
-  border-radius: 50px;
-  font-weight: 500;
+  border-radius: var(--radius-sm);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
   padding: 0.35rem 1.1rem;
-  font-size: 0.875rem;
   transition: all var(--transition);
 }
 
@@ -172,20 +248,17 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 .btn-filter.active {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: #0C0C0C;
 }
 
-/* Badge de Bootstrap personalizado */
-.bg-accent {
-  background-color: var(--accent) !important;
-}
+.bg-accent { background-color: var(--accent) !important; }
 
 /* ============================================================
-   Secciones alternadas
+   SECCIONES ALTERNADAS
 ============================================================ */
 .section-light {
   background-color: var(--bg-light);
-  color: #1a1a2e;
+  color: #1a1a1a;
 }
 
 .section-dark {
@@ -193,53 +266,70 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   color: var(--text-light);
 }
 
-/* Badge de sección (etiqueta pill sobre cada título) */
+/* ============================================================
+   BADGE DE SECCIÓN — estilo editorial, sin relleno
+============================================================ */
 .badge-section {
   display: inline-block;
-  background: rgba(var(--accent-rgb), 0.12);
+  background: transparent;
   color: var(--accent);
-  border: 1px solid rgba(var(--accent-rgb), 0.3);
-  padding: 0.3rem 1rem;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  border: none;
+  padding: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-/* Sobre fondo claro, ajustamos opacidad */
-.section-light .badge-section {
-  background: rgba(var(--accent-rgb), 0.08);
+/* ============================================================
+   NÚMERO DECORATIVO EN H2 DE SECCIÓN
+   Contador manual via data-attr o pseudo-elemento con content
+============================================================ */
+.section-heading {
+  position: relative;
+}
+
+.section-heading::before {
+  content: attr(data-num);
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(5rem, 12vw, 9rem);
+  font-weight: 800;
+  color: rgba(232, 255, 0, 0.06);
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* ============================================================
-   Sección Sobre mí
+   SECCIÓN SOBRE MÍ
 ============================================================ */
-
-/* Imagen de perfil circular */
 .avatar-img {
   width: 260px;
   height: 260px;
-  border-radius: 50%;
+  border-radius: 4px;
   object-fit: cover;
   background: linear-gradient(135deg, #1e1b4b, #0f0f1a);
-  border: 4px solid rgba(var(--accent-rgb), 0.45);
-  box-shadow: 0 0 40px rgba(var(--accent-rgb), 0.2);
+  border: 1px solid rgba(232, 255, 0, 0.2);
+  box-shadow: var(--shadow-md);
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .avatar-img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 60px rgba(var(--accent-rgb), 0.35);
+  transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(232, 255, 0, 0.15);
 }
 
 /* Fallback emoji si no carga la imagen */
 .avatar-emoji-fallback {
   width: 260px;
   height: 260px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.2), rgba(99, 179, 255, 0.1));
-  border: 4px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 4px;
+  background: #141414;
+  border: 1px solid rgba(232, 255, 0, 0.2);
   align-items: center;
   justify-content: center;
   font-size: 8rem;
@@ -253,8 +343,9 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.6rem;
-  font-size: 0.95rem;
-  color: #3a3a5c;
+  font-size: 0.88rem;
+  color: #3a3a2a;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 /* Botones de redes sociales */
@@ -265,81 +356,92 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  background: rgba(var(--accent-rgb), 0.1);
-  border: 1px solid rgba(var(--accent-rgb), 0.3);
-  color: var(--accent);
-  font-size: 1.2rem;
+  background: transparent;
+  border: 1px solid rgba(232, 255, 0, 0.25);
+  color: rgba(232, 230, 224, 0.6);
+  font-size: 1.1rem;
   text-decoration: none;
-  transition: background var(--transition), transform var(--transition), color var(--transition);
+  transition: background var(--transition), transform var(--transition), color var(--transition), border-color var(--transition);
 }
 
 .social-btn:hover,
 .social-btn:focus-visible {
   background: var(--accent);
-  color: #fff;
+  border-color: var(--accent);
+  color: #0C0C0C;
   transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(var(--accent-rgb), 0.4);
 }
 
 /* ============================================================
-   Sección Habilidades
+   SECCIÓN HABILIDADES — lista tipográfica
 ============================================================ */
-.skill-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
-  padding: 1.5rem 1rem;
-  text-align: center;
-  cursor: default;
-  transition: transform var(--transition), border-color var(--transition), background var(--transition);
+.skill-list {
+  border-top: 1px solid rgba(232, 230, 224, 0.1);
 }
 
-.skill-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(var(--accent-rgb), 0.5);
-  background: rgba(var(--accent-rgb), 0.06);
+.skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(232, 230, 224, 0.08);
+  transition: background var(--transition);
 }
 
-.skill-icon {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: 0.25rem;
+.skill-row:hover {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
-/* Colores específicos para iconos de tecnologías y skills */
-.text-purple { color: #7952b3; }
-.text-orange { color: #f4511e; }
-.text-pink   { color: #ec4899; }
-.text-teal   { color: #14b8a6; }
+.skill-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-light);
+  transition: color var(--transition);
+}
+
+.skill-row:hover .skill-name {
+  color: var(--accent);
+}
+
+.skill-category {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted-soft);
+  letter-spacing: 0.5px;
+}
 
 /* ============================================================
-   Tarjetas de proyectos
+   TARJETAS DE PROYECTOS — estilo editorial flat
 ============================================================ */
 .project-card {
   background: #fff;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition), box-shadow var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  transition: transform var(--transition), border-color var(--transition);
   display: flex;
   flex-direction: column;
 }
 
 .project-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 16px 40px rgba(var(--accent-rgb), 0.18);
+  transform: translateY(-5px);
+  border-color: rgba(232, 255, 0, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 /* Variante destacada */
 .project-card--featured {
-  border: 2px solid rgba(var(--accent-rgb), 0.4);
+  border-color: rgba(232, 255, 0, 0.3);
 }
 
 /* Imagen / thumbnail del proyecto */
 .project-img {
   height: 180px;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--accent), #a78bfa);
+  background: #1a1a1a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -349,9 +451,8 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 .project-img-3 { background: linear-gradient(135deg, #10b981, #34d399); }
 .project-img-4 { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
 .project-img-5 { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
-.project-img-6 { background: linear-gradient(135deg, var(--accent), #818cf8); }
+.project-img-6 { background: linear-gradient(135deg, #1a1a1a, #2a2a2a); }
 
-/* Las imágenes de los proyectos ocupan todo el contenedor */
 .project-thumb-img {
   width: 100%;
   height: 100%;
@@ -361,7 +462,7 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 }
 
 .project-card:hover .project-thumb-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .project-body {
@@ -375,37 +476,40 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   margin-top: auto;
 }
 
+/* Categoría en monospace */
 .project-category {
-  font-weight: 600;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
+  color: rgba(232, 255, 0, 0.6);
 }
 
-/* Badges de tecnología en las tarjetas */
+/* Badges de tecnología */
 .tech-badge {
   display: inline-block;
-  background: rgba(var(--accent-rgb), 0.1);
-  color: var(--accent);
-  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  background: transparent;
+  color: #555;
+  border: 1px solid #ddd;
   padding: 0.18rem 0.6rem;
-  border-radius: 50px;
-  font-size: 0.72rem;
-  font-weight: 700;
+  border-radius: 2px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 400;
   letter-spacing: 0.3px;
 }
 
 /* ============================================================
-   Contacto
+   CONTACTO
 ============================================================ */
-
-/* Bloque de información de contacto */
 .contact-info {
   font-style: normal;
   color: var(--text-light);
 }
 
 .contact-info h3 {
+  font-family: 'Syne', sans-serif;
   color: var(--text-light);
 }
 
@@ -414,7 +518,8 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .contact-item a {
@@ -429,44 +534,48 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 
 .contact-icon {
   color: var(--accent);
-  font-size: 1.1rem;
+  font-size: 1rem;
   flex-shrink: 0;
 }
 
-/* Inputs del formulario sobre fondo oscuro */
+/* Inputs del formulario */
 .custom-input {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(232, 230, 224, 0.12);
   color: var(--text-light);
   border-radius: var(--radius-sm);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.88rem;
   padding: 0.75rem 1rem;
   transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
 }
 
 .custom-input:focus {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(232, 255, 0, 0.03);
   border-color: var(--accent);
   color: var(--text-light);
-  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2);
+  box-shadow: 0 0 0 3px rgba(232, 255, 0, 0.1);
   outline: none;
 }
 
 .custom-input::placeholder {
-  color: rgba(224, 224, 240, 0.3);
+  color: rgba(232, 230, 224, 0.25);
 }
 
-/* Labels del formulario */
 .form-label {
-  color: var(--text-light);
-  font-size: 0.9rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(232, 230, 224, 0.6);
 }
 
 /* ============================================================
-   Footer
+   FOOTER
 ============================================================ */
 .footer-dark {
   background-color: var(--bg-dark);
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(232, 255, 0, 0.1);
 }
 
 .footer-nav {
@@ -477,9 +586,12 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 }
 
 .footer-nav a {
-  color: rgba(224, 224, 240, 0.5);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: rgba(232, 230, 224, 0.4);
   text-decoration: none;
-  font-size: 0.875rem;
+  text-transform: uppercase;
   transition: color var(--transition);
 }
 
@@ -487,13 +599,22 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   color: var(--accent);
 }
 
+/* Span editorial de ubicación */
+.footer-location {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+}
+
 /* ============================================================
-   Animación de entrada — Fade in desde abajo
-   Se activa con la clase .visible aplicada por IntersectionObserver
+   ANIMACIÓN FADE-IN
 ============================================================ */
 .fade-in {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -503,7 +624,15 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 }
 
 /* ============================================================
-   Diseño responsive — Breakpoints adicionales
+   COLORES AUXILIARES (iconos)
+============================================================ */
+.text-purple { color: #7952b3; }
+.text-orange { color: #f4511e; }
+.text-pink   { color: #ec4899; }
+.text-teal   { color: #14b8a6; }
+
+/* ============================================================
+   RESPONSIVE — breakpoints en orden descendente
 ============================================================ */
 
 /* Tablets (≤ 991px) */
@@ -514,7 +643,11 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   }
 
   .quick-facts li {
-    font-size: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .skill-name {
+    font-size: 1rem;
   }
 }
 
@@ -545,13 +678,17 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   .footer-nav {
     gap: 1rem;
   }
+
+  .skill-category {
+    display: none;
+  }
 }
 
 /* Mobile pequeño (≤ 479px) */
 @media (max-width: 479.98px) {
   .btn-lg {
     padding: 0.6rem 1.5rem;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
   }
 
   .project-img {
@@ -559,10 +696,7 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   }
 }
 
-/* ============================================================
-   Media query para impresión
-   Elimina fondos oscuros para ahorrar tinta
-============================================================ */
+/* Impresión */
 @media print {
   #navbar,
   .btn,
