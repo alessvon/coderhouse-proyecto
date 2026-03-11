@@ -633,6 +633,16 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 }
 
 /* ============================================================
+   CORRECCIÓN DE CONTRASTE — Bootstrap text-muted sobre oscuro
+   Bootstrap asigna #6c757d que sobre #0C0C0C solo da ~4.1:1
+   Se sube la luminosidad para superar WCAG AA (4.5:1)
+============================================================ */
+.section-dark .text-muted,
+.footer-dark  .text-muted {
+  color: rgba(232, 230, 224, 0.6) !important;  /* ratio ~7:1 sobre #0C0C0C */
+}
+
+/* ============================================================
    ANIMACIÓN FADE-IN
 ============================================================ */
 .fade-in {
