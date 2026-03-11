@@ -288,6 +288,11 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   color: var(--accent-on-light);
 }
 
+/* Íconos con text-accent-soft sobre fondo claro: amarillo invisible sobre crema */
+.section-light .text-accent-soft {
+  color: rgba(12, 12, 12, 0.45);   /* gris oscuro — contraste suficiente sobre crema */
+}
+
 /* ============================================================
    NÚMERO DECORATIVO EN H2 DE SECCIÓN
    Contador manual via data-attr o pseudo-elemento con content
