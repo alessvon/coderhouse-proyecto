@@ -301,13 +301,18 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   font-family: 'Syne', sans-serif;
   font-size: clamp(5rem, 12vw, 9rem);
   font-weight: 800;
-  color: rgba(232, 255, 0, 0.06);
+  color: rgba(232, 255, 0, 0.06);   /* sutil sobre fondos oscuros */
   position: absolute;
   top: -1rem;
   left: -1rem;
   line-height: 1;
   pointer-events: none;
   user-select: none;
+}
+
+/* Sobre fondo claro el amarillo desaparece — usar negro semitransparente */
+.section-light .section-heading::before {
+  color: rgba(12, 12, 12, 0.07);
 }
 
 /* ============================================================
