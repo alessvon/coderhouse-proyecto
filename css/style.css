@@ -288,6 +288,11 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
   color: var(--accent-on-light);
 }
 
+/* Íconos neutros sobre fondo claro */
+.icon-muted {
+  color: #888880;                  /* gris cálido — contraste ~4.6:1 sobre crema */
+}
+
 /* ============================================================
    NÚMERO DECORATIVO EN H2 DE SECCIÓN
    Contador manual via data-attr o pseudo-elemento con content
