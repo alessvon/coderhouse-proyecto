@@ -1,0 +1,98 @@
+@use 'sass:list';
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   TARJETAS DE PROYECTOS
+// ============================================================
+
+// Gradientes de thumbnails generados con @each
+$project-gradients: (
+  2: (#0ea5e9, #38bdf8),
+  3: (#10b981, #34d399),
+  4: (#f59e0b, #fbbf24),
+  5: (#8b5cf6, #a78bfa),
+  6: (#1a1a1a, #2a2a2a),
+);
+
+@each $num, $colors in $project-gradients {
+  .project-img-#{$num} {
+    background: linear-gradient(135deg, list.nth($colors, 1), list.nth($colors, 2));
+  }
+}
+
+// Tarjeta base
+.project-card {
+  background: #fff;
+  border-radius: vars.$radius-sm;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  @include mx.transition(transform, border-color, box-shadow);
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(vars.$color-accent, 0.35);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  // Variante destacada
+  &--featured {
+    border-color: rgba(vars.$color-accent, 0.3);
+  }
+}
+
+// Contenedor de imagen / thumbnail
+.project-img {
+  height: 180px;
+  overflow: hidden;
+  background: #1a1a1a;
+  @include mx.flex-center;
+}
+
+.project-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform vars.$transition-slow vars.$ease;
+
+  .project-card:hover & {
+    transform: scale(1.04);
+  }
+}
+
+// Cuerpo de la tarjeta
+.project-body {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .d-flex:last-child {
+    margin-top: auto;
+  }
+}
+
+// Categoría — monospace sobre fondo blanco
+.project-category {
+  @include mx.mono-label(0.68rem, 0.5px);
+  font-weight: 400;
+  color: vars.$color-accent-on-light;
+}
+
+// Badge de tecnología
+.tech-badge {
+  display: inline-block;
+  background: transparent;
+  color: #555;
+  border: 1px solid #ddd;
+  padding: 0.18rem 0.6rem;
+  border-radius: 2px;
+  font-family: vars.$font-body;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}

@@ -1,0 +1,77 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   BOTONES
+// ============================================================
+
+// Placeholder compartido — extendido por .btn-accent y .btn-outline-light
+%btn-base {
+  font-family: vars.$font-body;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border-radius: vars.$radius-sm;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// Botón primario — amarillo sobre negro
+.btn-accent {
+  @extend %btn-base;
+  background-color: vars.$color-accent;
+  color: vars.$color-bg-dark;
+  border: none;
+  @include mx.transition(background-color, transform, box-shadow);
+
+  &:hover,
+  &:focus-visible {
+    background-color: vars.$color-accent-dark;
+    color: vars.$color-bg-dark;
+    transform: translateY(-2px);
+    box-shadow: vars.$shadow-accent;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Botón secundario — outline claro
+.btn-outline-light {
+  @extend %btn-base;
+  border-color: rgba(vars.$color-text-light, 0.3);
+  color: vars.$color-text-light;
+  @include mx.transition(border-color, color, background-color);
+
+  &:hover,
+  &:focus-visible {
+    border-color: vars.$color-accent;
+    color: vars.$color-accent;
+    background: transparent;
+  }
+}
+
+// Botón de filtro — página proyectos
+.btn-filter {
+  background: transparent;
+  border: 1px solid rgba(vars.$color-text-light, 0.15);
+  color: vars.$color-text-muted;
+  border-radius: vars.$radius-sm;
+  font-family: vars.$font-body;
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 1.1rem;
+  touch-action: manipulation;
+  @include mx.transition(background-color, border-color, color);
+
+  &:hover,
+  &.active {
+    background: vars.$color-accent;
+    border-color: vars.$color-accent;
+    color: vars.$color-bg-dark;
+  }
+}
+
+.bg-accent { background-color: vars.$color-accent !important; }

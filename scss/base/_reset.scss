@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as vars;
+
+// ============================================================
+//   RESET Y BASE
+// ============================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: vars.$font-body;
+  font-size: 1rem;
+  line-height: 1.7;
+  background-color: vars.$color-bg-dark;
+  color: vars.$color-text-light;
+  overflow-x: hidden;
+}
+
+// Offset para navbar fijo al hacer scroll a secciones
+section[id],
+main section[id] {
+  scroll-margin-top: vars.$navbar-height;
+}
+
+// Selección de texto con color de acento
+::selection {
+  background: vars.$color-accent;
+  color: vars.$color-bg-dark;
+}

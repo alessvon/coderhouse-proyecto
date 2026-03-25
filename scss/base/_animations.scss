@@ -1,0 +1,100 @@
+@use '../abstracts/variables' as vars;
+
+// ============================================================
+//   ANIMACIONES Y KEYFRAMES
+// ============================================================
+
+// --- Keyframes ---
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) skewY(1.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) skewY(0deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(vars.$color-accent, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 24px 10px rgba(vars.$color-accent, 0);
+  }
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+// --- Clases de animación de entrada (scroll-driven via JS) ---
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s vars.$ease, transform 0.6s vars.$ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- Entrada del hero (animación de carga) ---
+
+.hero-animate {
+  animation: hero-reveal 0.8s vars.$ease both;
+
+  &--delay-1 { animation-delay: 0.05s; }
+  &--delay-2 { animation-delay: 0.2s;  }
+  &--delay-3 { animation-delay: 0.35s; }
+  &--delay-4 { animation-delay: 0.5s;  }
+}
+
+// --- Cursor parpadeante decorativo ---
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: vars.$color-accent;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+// --- Respeto a prefers-reduced-motion ---
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-animate {
+    animation: none;
+  }
+}

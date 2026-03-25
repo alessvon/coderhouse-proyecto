@@ -1,0 +1,47 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   HEADER / NAVBAR
+// ============================================================
+
+#navbar {
+  background: rgba(vars.$color-bg-dark, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid vars.$color-border-accent;
+  @include mx.transition(background-color, box-shadow);
+
+  .navbar-brand {
+    @include mx.mono-label(0.75rem, 2px);
+    font-weight: 500;
+    color: vars.$color-accent;
+
+    &:hover {
+      color: vars.$color-accent-dark;
+    }
+  }
+
+  .nav-link {
+    font-family: vars.$font-body;
+    font-size: 0.8rem;
+    color: rgba(vars.$color-text-light, 0.6);
+    font-weight: 400;
+    padding: 0.4rem 0.85rem;
+    border-radius: vars.$radius-sm;
+    @include mx.transition(color, background-color);
+
+    &:hover,
+    &.active {
+      color: vars.$color-accent;
+      background: rgba(vars.$color-accent, 0.06);
+    }
+  }
+}
+
+// Números decorativos de navegación
+.nav-num {
+  color: rgba(vars.$color-accent, 0.5);
+  margin-right: 0.35rem;
+  font-size: 0.7rem;
+}

@@ -16,6 +16,11 @@ desktop.ini
 *.tmp
 *.bak
 
-# Node (si se usa en algún momento)
+# Node
 node_modules/
 npm-debug.log*
+package-lock.json
+
+# SASS
+.sass-cache/
+*.css.map

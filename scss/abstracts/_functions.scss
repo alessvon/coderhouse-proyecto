@@ -1,0 +1,28 @@
+@use 'sass:math';
+
+// ============================================================
+//   FUNCTIONS
+// ============================================================
+
+/// Elimina la unidad de un número
+/// @param {Number} $number - Número con unidad
+/// @return {Number} - Número sin unidad
+@function strip-unit($number) {
+  @return math.div($number, ($number * 0 + 1));
+}
+
+/// Convierte píxeles a rem (base 16px)
+/// @param {Number} $px - Valor en px
+/// @return {Number} - Valor en rem
+@function rem($px) {
+  @return math.div($px, 16px) * 1rem;
+}
+
+/// Escala un valor entre un mínimo y máximo según un factor
+/// @param {Number} $min
+/// @param {Number} $max
+/// @param {Number} $factor - entre 0 y 1
+/// @return {Number}
+@function scale-between($min, $max, $factor: 0.5) {
+  @return $min + ($max - $min) * $factor;
+}
