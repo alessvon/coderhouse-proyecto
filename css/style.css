@@ -633,6 +633,16 @@ h3              { font-size: clamp(1.1rem, 2vw + 0.2rem, 1.4rem); }
 }
 
 /* ============================================================
+   SUBTÍTULOS EN FONDOS OSCUROS
+   Bootstrap .text-muted usa #6c757d — insuficiente sobre #0C0C0C
+   Override solo en secciones oscuras y footer
+============================================================ */
+.section-dark .text-muted,
+.footer-dark  .text-muted {
+  color: #a8a49c !important;       /* crema grisáceo — contraste ~5.8:1 sobre #0C0C0C */
+}
+
+/* ============================================================
    ANIMACIÓN FADE-IN
 ============================================================ */
 .fade-in {
