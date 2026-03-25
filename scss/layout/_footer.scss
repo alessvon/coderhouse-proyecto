@@ -1,0 +1,47 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   FOOTER
+// ============================================================
+
+.footer-dark {
+  background-color: vars.$color-bg-dark;
+  border-top: 1px solid rgba(vars.$color-accent, 0.1);
+
+  .text-muted {
+    color: vars.$color-text-muted-solid !important;
+  }
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+
+  a {
+    font-family: vars.$font-body;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: rgba(vars.$color-text-light, 0.4);
+    text-decoration: none;
+    text-transform: uppercase;
+    @include mx.transition(color);
+
+    &:hover,
+    &:focus-visible {
+      color: vars.$color-accent;
+    }
+  }
+}
+
+// Span editorial de ubicación
+.footer-location {
+  display: block;
+  margin-top: 0.5rem;
+  color: vars.$color-accent;
+  font-family: vars.$font-body;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+}

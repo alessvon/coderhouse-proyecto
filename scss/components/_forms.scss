@@ -1,0 +1,35 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   FORMULARIOS
+// ============================================================
+
+.custom-input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid vars.$color-border-light;
+  color: vars.$color-text-light;
+  border-radius: vars.$radius-sm;
+  font-family: vars.$font-body;
+  font-size: 0.88rem;
+  padding: 0.75rem 1rem;
+  @include mx.transition(border-color, background-color, box-shadow);
+
+  &:focus {
+    background: rgba(vars.$color-accent, 0.03);
+    border-color: vars.$color-accent;
+    color: vars.$color-text-light;
+    box-shadow: 0 0 0 3px rgba(vars.$color-accent, 0.1);
+    outline: 2px solid transparent; // reemplazado por box-shadow WCAG 2.4.11
+    outline-offset: 0;
+  }
+
+  &::placeholder {
+    color: rgba(vars.$color-text-light, 0.25);
+  }
+}
+
+.form-label {
+  @include mx.mono-label(0.78rem, 1px);
+  color: rgba(vars.$color-text-light, 0.6);
+}

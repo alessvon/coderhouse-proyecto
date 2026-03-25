@@ -1,0 +1,65 @@
+// ============================================================
+//   VARIABLES
+//   Paleta editorial-tech: negro profundo + amarillo limón + crema
+// ============================================================
+
+// --- Colores primarios ---
+$color-accent:          #E8FF00;
+$color-accent-dark:     #c8dc00;
+$color-accent-on-light: #0C0C0C;
+
+// --- Fondos ---
+$color-bg-dark:         #0C0C0C;
+$color-bg-dark-2:       #141414;
+$color-bg-light:        #F0EDE6;
+
+// --- Texto ---
+$color-text-light:      #E8E6E0;
+$color-text-muted:      rgba(232, 230, 224, 0.45);
+$color-text-muted-solid: #a8a49c;
+
+// --- Bordes ---
+$color-border-accent:   rgba(232, 255, 0, 0.2);
+$color-border-light:    rgba(232, 230, 224, 0.12);
+
+// --- Colores de acento secundarios (iconos) ---
+$color-purple: #7952b3;
+$color-orange: #f4511e;
+$color-pink:   #ec4899;
+$color-teal:   #14b8a6;
+
+// --- Sombras ---
+$shadow-sm:     0 2px 8px  rgba(0, 0, 0, 0.4);
+$shadow-md:     0 6px 24px rgba(0, 0, 0, 0.5);
+$shadow-lg:     0 12px 40px rgba(0, 0, 0, 0.6);
+$shadow-accent: 0 6px 20px rgba(232, 255, 0, 0.3);
+
+// --- Radios ---
+$radius-sm: 4px;
+$radius-md: 8px;
+
+// --- Tipografía ---
+$font-display: 'Syne', sans-serif;
+$font-body:    'IBM Plex Mono', monospace;
+$font-serif:   'Libre Baskerville', serif;
+
+// --- Espaciado ---
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 4rem;
+$spacing-xl: 6rem;
+
+// --- Transiciones ---
+$transition-duration: 0.25s;
+$transition-slow:     0.4s;
+$ease:                ease;
+
+// --- Breakpoints (mobile-first) ---
+$bp-sm:  576px;
+$bp-md:  768px;
+$bp-lg:  992px;
+$bp-xl:  1200px;
+
+// --- Layout ---
+$navbar-height: 80px;

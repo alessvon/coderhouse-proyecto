@@ -1,0 +1,45 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   PÁGINA DE PROYECTOS — proyectos.html
+// ============================================================
+
+// ── HERO INTERNO ──────────────────────────────────────────────
+
+.page-hero {
+  min-height: 42vh;
+  background: vars.$color-bg-dark;
+  padding-top: 100px;
+  @include mx.dot-grid(0.08);
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// ── GRILLA DE PROYECTOS ───────────────────────────────────────
+
+#projects-grid {
+  // CSS Grid nativo para el layout de la grilla
+  @include mx.respond-up(vars.$bp-lg) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    // Los .col-* de Bootstrap se anulan con grid explícito
+    > [class*='col-'] {
+      width: 100%;
+    }
+  }
+}
+
+// Transición para filtrado de proyectos via JS
+.project-item {
+  @include mx.transition(opacity);
+
+  &.hidden {
+    display: none;
+  }
+}

@@ -1,0 +1,26 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   BADGES Y ETIQUETAS
+// ============================================================
+
+// Badge editorial de sección — sin relleno, solo color de acento
+.badge-section {
+  display: inline-block;
+  background: transparent;
+  color: vars.$color-accent;
+  border: none;
+  padding: 0;
+  @include mx.mono-label(0.72rem, 3px);
+
+  // En secciones claras el amarillo no tiene contraste → usar negro
+  .section-light & {
+    color: vars.$color-accent-on-light;
+  }
+}
+
+// Ícono decorativo neutro sobre fondo claro
+.icon-muted {
+  color: #888880; // gris cálido — contraste ~4.6:1 sobre crema
+}

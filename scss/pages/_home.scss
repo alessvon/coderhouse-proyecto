@@ -1,0 +1,188 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   PÁGINA DE INICIO — index.html
+// ============================================================
+
+// ── HERO ──────────────────────────────────────────────────────
+
+#hero {
+  background: vars.$color-bg-dark;
+  @include mx.dot-grid(0.12);
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: clamp(3.5rem, 10vw + 1rem, 8rem);
+    letter-spacing: -2px;
+    line-height: 0.95;
+    font-family: vars.$font-display;
+    font-weight: 800;
+    text-wrap: balance;
+  }
+}
+
+.hero-subtitle {
+  font-family: vars.$font-body;
+  font-size: clamp(0.9rem, 1.5vw + 0.3rem, 1.2rem);
+  color: rgba(vars.$color-text-light, 0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-desc {
+  max-width: 560px;
+  color: rgba(vars.$color-text-light, 0.65);
+  font-size: 0.95rem;
+}
+
+// ── SOBRE MÍ ──────────────────────────────────────────────────
+
+.avatar-img {
+  width: 260px;
+  height: 260px;
+  border-radius: vars.$radius-sm;
+  object-fit: cover;
+  background: linear-gradient(135deg, #1e1b4b, #0f0f1a);
+  border: 1px solid rgba(vars.$color-accent, 0.2);
+  box-shadow: vars.$shadow-md;
+  @include mx.transition(transform, box-shadow);
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(vars.$color-accent, 0.15);
+  }
+}
+
+.avatar-emoji-fallback {
+  width: 260px;
+  height: 260px;
+  border-radius: vars.$radius-sm;
+  background: vars.$color-bg-dark-2;
+  border: 1px solid rgba(vars.$color-accent, 0.2);
+  @include mx.flex-center;
+  font-size: 8rem;
+  line-height: 1;
+  margin: 0 auto;
+}
+
+.quick-facts {
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.88rem;
+    color: #3a3a2a;
+    font-family: vars.$font-body;
+  }
+}
+
+.social-btn {
+  @include mx.flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: vars.$radius-sm;
+  background: transparent;
+  border: 1px solid rgba(vars.$color-accent, 0.25);
+  color: rgba(vars.$color-text-light, 0.6);
+  font-size: 1.1rem;
+  text-decoration: none;
+  @include mx.transition(background-color, transform, color, border-color);
+
+  &:hover,
+  &:focus-visible {
+    background: vars.$color-accent;
+    border-color: vars.$color-accent;
+    color: vars.$color-bg-dark;
+    transform: translateY(-3px);
+  }
+}
+
+// ── HABILIDADES ────────────────────────────────────────────────
+
+.skill-list {
+  border-top: 1px solid rgba(vars.$color-text-light, 0.1);
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(vars.$color-text-light, 0.08);
+  @include mx.transition(background-color, padding-left, padding-right);
+
+  &:hover {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.skill-name {
+  font-family: vars.$font-display;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: vars.$color-text-light;
+  @include mx.transition(color);
+
+  .skill-row:hover & {
+    color: vars.$color-accent;
+  }
+}
+
+.skill-category {
+  font-family: vars.$font-body;
+  font-size: 0.75rem;
+  color: vars.$color-text-muted;
+  letter-spacing: 0.5px;
+}
+
+// ── CONTACTO ──────────────────────────────────────────────────
+
+.contact-info {
+  font-style: normal;
+  color: vars.$color-text-light;
+
+  h3 {
+    font-family: vars.$font-display;
+    color: vars.$color-text-light;
+  }
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  font-family: vars.$font-body;
+
+  a {
+    color: vars.$color-text-light;
+    text-decoration: none;
+    @include mx.transition(color);
+
+    &:hover,
+    &:focus-visible {
+      color: vars.$color-accent;
+    }
+  }
+}
+
+.contact-icon {
+  color: vars.$color-accent;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+// Ajuste del número decorativo en la sección "Sobre mí"
+// (columna izquierda, no centrada — el número queda muy adentro)
+#sobre-mi .section-heading::before {
+  left: -4rem;
+  top: -2rem;
+}

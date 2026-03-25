@@ -1,0 +1,30 @@
+@use '../abstracts/variables' as vars;
+
+// ============================================================
+//   CSS CUSTOM PROPERTIES
+//   Las variables SCSS se exponen como custom properties
+//   para acceso en tiempo de ejecución (JS, DevTools, Bootstrap)
+// ============================================================
+
+:root {
+  --accent:          #{vars.$color-accent};
+  --accent-dark:     #{vars.$color-accent-dark};
+  --accent-rgb:      232, 255, 0;
+  --accent-on-light: #{vars.$color-accent-on-light};
+
+  --bg-dark:         #{vars.$color-bg-dark};
+  --bg-dark-2:       #{vars.$color-bg-dark-2};
+  --bg-light:        #{vars.$color-bg-light};
+
+  --text-light:      #{vars.$color-text-light};
+  --text-muted-soft: #{vars.$color-text-muted};
+
+  --radius-sm: #{vars.$radius-sm};
+  --radius-md: #{vars.$radius-md};
+
+  --shadow-sm: #{vars.$shadow-sm};
+  --shadow-md: #{vars.$shadow-md};
+  --shadow-lg: #{vars.$shadow-lg};
+
+  --transition: #{vars.$transition-duration} #{vars.$ease};
+}

@@ -1,0 +1,67 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   GRID / SECCIONES / UTILIDADES DE COLOR
+// ============================================================
+
+// --- Secciones alternadas ---
+
+.section-light {
+  background-color: vars.$color-bg-light;
+  color: #1a1a1a;
+}
+
+.section-dark {
+  background-color: vars.$color-bg-dark-2;
+  color: vars.$color-text-light;
+
+  // Bootstrap .text-muted usa #6c757d — insuficiente sobre negro
+  .text-muted {
+    color: vars.$color-text-muted-solid !important;
+  }
+}
+
+// --- Número decorativo en headings de sección ---
+
+.section-heading {
+  position: relative;
+
+  &::before {
+    content: attr(data-num);
+    font-family: vars.$font-display;
+    font-size: clamp(5rem, 12vw, 9rem);
+    font-weight: 800;
+    color: rgba(vars.$color-accent, 0.06);
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+// En secciones claras el amarillo desaparece → usar negro
+.section-light .section-heading::before {
+  color: rgba(vars.$color-bg-dark, 0.07);
+}
+
+// --- Clases de texto utilitarias — generadas con @each ---
+
+$text-colors: (
+  'accent':       vars.$color-accent,
+  'accent-soft':  rgba(vars.$color-accent, 0.7),
+  'muted-light':  rgba(vars.$color-text-light, 0.45),
+  'muted-soft':   vars.$color-text-muted,
+  'purple':       vars.$color-purple,
+  'orange':       vars.$color-orange,
+  'pink':         vars.$color-pink,
+  'teal':         vars.$color-teal,
+);
+
+@each $name, $color in $text-colors {
+  .text-#{$name} {
+    color: $color;
+  }
+}

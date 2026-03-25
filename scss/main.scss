@@ -1,0 +1,39 @@
+// ============================================================
+//   MAIN.SCSS — Punto de entrada
+//   Compila con: npm run sass:build
+//               o sass scss/main.scss css/style.css
+//
+//   Arquitectura:
+//     abstracts/  → variables, funciones, mixins (sin output)
+//     base/       → reset, tipografía, animaciones, css-vars
+//     components/ → badges, botones, cards, formularios
+//     layout/     → header, footer, grid, responsive
+//     pages/      → home, projects
+// ============================================================
+
+// 1. Abstracts — sin output CSS
+@use 'abstracts/variables';
+@use 'abstracts/functions';
+@use 'abstracts/mixins';
+
+// 2. Base
+@use 'base/css-vars';
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/animations';
+
+// 3. Componentes
+@use 'components/badges';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/forms';
+
+// 4. Layout
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/grid';
+@use 'layout/responsive';
+
+// 5. Páginas
+@use 'pages/home';
+@use 'pages/projects';
